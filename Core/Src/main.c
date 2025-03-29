@@ -33,7 +33,7 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 int Watch;
-int adc_initializer=0;
+int adc_initializer;
 int adc_flag=0;//Used as flag for ADC INIT
 int emergencyCnt=0,rstCnt=0,adcCnt=0,usartCnt=0;
 int count=0;
@@ -97,7 +97,6 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-	adc_initializer += HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_15);
   MX_DMA_Init();
   MX_TIM2_Init();
   MX_ADC1_Init();
@@ -110,8 +109,6 @@ int main(void)
 	HAL_ADC_PollForConversion(&hadc1, 20);
 	HAL_TIM_Base_Start_IT(&htim2);
 	HAL_TIM_Base_Start_IT(&htim3);
-//	HAL_TIM_Base_Start_IT(&htim4);
-	
   /* USER CODE END 2 */
 
   /* Infinite loop */
